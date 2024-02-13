@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #canvas,
+      canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <script id="snoise-function" type="module" src="./snoise.js"></script>
+    <script id="vertex-shader" type="module" src="./vertexShader.js"></script>
+    <script
+      id="fragment-shader"
+      type="module"
+      src="./fragmentShader.js"
+    ></script>
+    <script src="./script.js" type="module"></script>
+  </body>
+</html>
