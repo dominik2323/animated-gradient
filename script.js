@@ -16,11 +16,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
   document.body.appendChild(renderer.domElement);
 
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(
-    75,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
+  const camera = new THREE.OrthographicCamera(
+    -innerWidth / 2,
+    innerWidth / 2,
+    innerHeight / 2,
+    -innerHeight / 2,
+    -100,
+    100
   );
 
   camera.position.z = 5;
@@ -36,9 +38,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
   let material = new THREE.ShaderMaterial({
     uniforms: {
       u_bg: { type: "v3", value: rgb(245, 255, 242) },
-      u_bgMain: { type: "v3", value: rgb(104, 144, 217) },
+      u_bgMain: { type: "v3", value: rgb(171, 198, 248) },
       u_color1: { type: "v3", value: rgb(245, 255, 242) },
-      u_color2: { type: "v3", value: rgb(161, 232, 139) },
+      u_color2: { type: "v3", value: rgb(212, 255, 199) },
       u_time: { type: "f", value: 30 },
       u_randomisePosition: { type: "v2", value: randomisePosition },
     },
@@ -47,8 +49,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
   });
 
   let mesh = new THREE.Mesh(geometry, material);
-  mesh.position.set(500, 0, -800);
-  mesh.scale.multiplyScalar(3);
+  mesh.scale.multiplyScalar(2);
   mesh.rotationX = 0.0;
   mesh.rotationY = 0.0;
   mesh.rotationZ = 0.0;
@@ -66,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     );
     mesh.material.uniforms.u_time.value = t;
 
-    j = j + 0.01;
+    j = j + 0.02;
     t = t + 0.05;
   };
   animate();
@@ -74,6 +75,5 @@ document.addEventListener("DOMContentLoaded", function (e) {
     renderer.setSize(window.innerWidth, window.innerHeight);
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-    console.log(geometry);
   });
 });
